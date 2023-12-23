@@ -1,9 +1,9 @@
 #coding=windows-1251
 
-#Для создания файлов
+#Г„Г«Гї Г±Г®Г§Г¤Г Г­ГЁГї ГґГ Г©Г«Г®Гў
 import os, csv
 import shutil
-#Для бота
+#Г„Г«Гї ГЎГ®ГІГ 
 import asyncio
 import logging
 from aiogram import Bot, Dispatcher, types
@@ -11,7 +11,7 @@ from aiogram.filters.command import Command, CommandObject
 
 logging.basicConfig(level=logging.INFO)
 
-bot = Bot(token="6781190369:AAE7PzIDlU8gHy1MCblmKyvvnAjI2WsaDBo")
+bot = Bot(token="TOKEN")
 
 dp = Dispatcher()
 
@@ -25,28 +25,28 @@ def l_find(l: list, elt) -> int:
 
 @dp.message(Command("help"))
 async def cmd_help(message: types.Message):
-    ans = "Список команд:\n"
-    ans += "/cf <Название папки>" + " - создаёт пустую папку" + "\n"
-    ans += "/df <Номер папки>" + " - удаляет папку вместе со всем содержимым" + "\n"
+    ans = "Г‘ГЇГЁГ±Г®ГЄ ГЄГ®Г¬Г Г­Г¤:\n"
+    ans += "/cf <ГЌГ Г§ГўГ Г­ГЁГҐ ГЇГ ГЇГЄГЁ>" + " - Г±Г®Г§Г¤Г ВёГІ ГЇГіГ±ГІГіГѕ ГЇГ ГЇГЄГі" + "\n"
+    ans += "/df <ГЌГ®Г¬ГҐГ° ГЇГ ГЇГЄГЁ>" + " - ГіГ¤Г Г«ГїГҐГІ ГЇГ ГЇГЄГі ГўГ¬ГҐГ±ГІГҐ Г±Г® ГўГ±ГҐГ¬ Г±Г®Г¤ГҐГ°Г¦ГЁГ¬Г»Г¬" + "\n"
 
-    ans += "/an <Номер папки> <Запись>" + " - добавляет запись в папку" + "\n"
-    ans += "/dn <Номер папки> <Номер Записи>" + " - удаляет запись из папки" + "\n"
+    ans += "/an <ГЌГ®Г¬ГҐГ° ГЇГ ГЇГЄГЁ> <Г‡Г ГЇГЁГ±Гј>" + " - Г¤Г®ГЎГ ГўГ«ГїГҐГІ Г§Г ГЇГЁГ±Гј Гў ГЇГ ГЇГЄГі" + "\n"
+    ans += "/dn <ГЌГ®Г¬ГҐГ° ГЇГ ГЇГЄГЁ> <ГЌГ®Г¬ГҐГ° Г‡Г ГЇГЁГ±ГЁ>" + " - ГіГ¤Г Г«ГїГҐГІ Г§Г ГЇГЁГ±Гј ГЁГ§ ГЇГ ГЇГЄГЁ" + "\n"
 
-    ans += "/slib" + " - показывает все папки в вашей библиотеке" + "\n"
-    ans += "/sf <Номер папки>" + " - показывает содержимое папки" + "\n"
+    ans += "/slib" + " - ГЇГ®ГЄГ Г§Г»ГўГ ГҐГІ ГўГ±ГҐ ГЇГ ГЇГЄГЁ Гў ГўГ ГёГҐГ© ГЎГЁГЎГ«ГЁГ®ГІГҐГЄГҐ" + "\n"
+    ans += "/sf <ГЌГ®Г¬ГҐГ° ГЇГ ГЇГЄГЁ>" + " - ГЇГ®ГЄГ Г§Г»ГўГ ГҐГІ Г±Г®Г¤ГҐГ°Г¦ГЁГ¬Г®ГҐ ГЇГ ГЇГЄГЁ" + "\n"
 
-    ans += "/ac <Номер папки> <Номер записи> <примечание>" + " - добавляет примечание к записи" + "\n"
-    ans += "/dc <Номер папки> <Номер записи> <Номер примечания>" + " - удаляет примечание к записи" + "\n"
-    ans += "/dlib" + " - полностью удаляет вашу библеотеку" + "\n"
+    ans += "/ac <ГЌГ®Г¬ГҐГ° ГЇГ ГЇГЄГЁ> <ГЌГ®Г¬ГҐГ° Г§Г ГЇГЁГ±ГЁ> <ГЇГ°ГЁГ¬ГҐГ·Г Г­ГЁГҐ>" + " - Г¤Г®ГЎГ ГўГ«ГїГҐГІ ГЇГ°ГЁГ¬ГҐГ·Г Г­ГЁГҐ ГЄ Г§Г ГЇГЁГ±ГЁ" + "\n"
+    ans += "/dc <ГЌГ®Г¬ГҐГ° ГЇГ ГЇГЄГЁ> <ГЌГ®Г¬ГҐГ° Г§Г ГЇГЁГ±ГЁ> <ГЌГ®Г¬ГҐГ° ГЇГ°ГЁГ¬ГҐГ·Г Г­ГЁГї>" + " - ГіГ¤Г Г«ГїГҐГІ ГЇГ°ГЁГ¬ГҐГ·Г Г­ГЁГҐ ГЄ Г§Г ГЇГЁГ±ГЁ" + "\n"
+    ans += "/dlib" + " - ГЇГ®Г«Г­Г®Г±ГІГјГѕ ГіГ¤Г Г«ГїГҐГІ ГўГ ГёГі ГЎГЁГЎГ«ГҐГ®ГІГҐГЄГі" + "\n"
     return await message.answer(ans)
 
 
 @dp.message(Command("start"))
 async def cmd_start(message: types.Message):
-    ans = "Приветствую! Я ваш личный архивариус." + "\n"
-    ans += "Я могу помочь хранить ваши записи." + "\n"
-    ans += "Например вы можете создать список дел" + "\n"
-    ans += "Если хотите продолжить используйте команду /clib для создания своей библиотеки" + "\n"
+    ans = "ГЏГ°ГЁГўГҐГІГ±ГІГўГіГѕ! Гџ ГўГ Гё Г«ГЁГ·Г­Г»Г© Г Г°ГµГЁГўГ Г°ГЁГіГ±." + "\n"
+    ans += "Гџ Г¬Г®ГЈГі ГЇГ®Г¬Г®Г·Гј ГµГ°Г Г­ГЁГІГј ГўГ ГёГЁ Г§Г ГЇГЁГ±ГЁ." + "\n"
+    ans += "ГЌГ ГЇГ°ГЁГ¬ГҐГ° ГўГ» Г¬Г®Г¦ГҐГІГҐ Г±Г®Г§Г¤Г ГІГј Г±ГЇГЁГ±Г®ГЄ Г¤ГҐГ«" + "\n"
+    ans += "Г…Г±Г«ГЁ ГµГ®ГІГЁГІГҐ ГЇГ°Г®Г¤Г®Г«Г¦ГЁГІГј ГЁГ±ГЇГ®Г«ГјГ§ГіГ©ГІГҐ ГЄГ®Г¬Г Г­Г¤Гі /clib Г¤Г«Гї Г±Г®Г§Г¤Г Г­ГЁГї Г±ГўГ®ГҐГ© ГЎГЁГЎГ«ГЁГ®ГІГҐГЄГЁ" + "\n"
     return await message.answer(ans)
 
 
@@ -55,11 +55,11 @@ async def create_dir(message: types.Message):
     chat_id = str(message.chat.id)
     if l_find(os.listdir(os.getcwd()), chat_id) == -1:
         os.mkdir(chat_id)
-        ans = "библиотека создана" + "\n"
-        ans += "Используйте команду /help, если забудите команды" + "\n"
+        ans = "ГЎГЁГЎГ«ГЁГ®ГІГҐГЄГ  Г±Г®Г§Г¤Г Г­Г " + "\n"
+        ans += "Г€Г±ГЇГ®Г«ГјГ§ГіГ©ГІГҐ ГЄГ®Г¬Г Г­Г¤Гі /help, ГҐГ±Г«ГЁ Г§Г ГЎГіГ¤ГЁГІГҐ ГЄГ®Г¬Г Г­Г¤Г»" + "\n"
         return await message.answer(ans)
     else:
-        return await message.answer("У вас уже есть своя библиотека")
+        return await message.answer("Г“ ГўГ Г± ГіГ¦ГҐ ГҐГ±ГІГј Г±ГўГ®Гї ГЎГЁГЎГ«ГЁГ®ГІГҐГЄГ ")
 
 
 @dp.message(Command("dlib"))
@@ -67,19 +67,19 @@ async def create_dir(message: types.Message):
     chat_id = str(message.chat.id)
     if l_find(os.listdir(os.getcwd()), chat_id) != -1:
         shutil.rmtree(chat_id)
-        return await message.answer("Ваша библиотека удалена")
+        return await message.answer("Г‚Г ГёГ  ГЎГЁГЎГ«ГЁГ®ГІГҐГЄГ  ГіГ¤Г Г«ГҐГ­Г ")
     else:
-        return await message.answer("У вас нет своей библиотеки")
+        return await message.answer("Г“ ГўГ Г± Г­ГҐГІ Г±ГўГ®ГҐГ© ГЎГЁГЎГ«ГЁГ®ГІГҐГЄГЁ")
 
 
 
 @dp.message(Command("an"))
 async def add_note(message: types.Message, command: CommandObject):
     if command.args is None:
-        return await message.answer("Ошибка: Вы не указали парметры")
+        return await message.answer("ГЋГёГЁГЎГЄГ : Г‚Г» Г­ГҐ ГіГЄГ Г§Г Г«ГЁ ГЇГ Г°Г¬ГҐГІГ°Г»")
     args = command.args.split(" ", maxsplit=1)
     if len(args) < 2:
-        return await message.answer("Ошибка: Вы не указали один из параметров")
+        return await message.answer("ГЋГёГЁГЎГЄГ : Г‚Г» Г­ГҐ ГіГЄГ Г§Г Г«ГЁ Г®Г¤ГЁГ­ ГЁГ§ ГЇГ Г°Г Г¬ГҐГІГ°Г®Гў")
     
     n = int(args[0])
 
@@ -90,7 +90,7 @@ async def add_note(message: types.Message, command: CommandObject):
     l = os.listdir(os.getcwd() + "/" + chat_id)
 
     if n > len(l) or n < 1:
-        return await message.answer("Ошибка: Такой папки не существует")
+        return await message.answer("ГЋГёГЁГЎГЄГ : Г’Г ГЄГ®Г© ГЇГ ГЇГЄГЁ Г­ГҐ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ")
 
     folder = l[n-1]
 
@@ -98,17 +98,17 @@ async def add_note(message: types.Message, command: CommandObject):
         writer = csv.writer(f, delimiter='|')
         writer.writerow([note])
 
-    return await message.answer("Запись <" + note + "> добавлена в " + folder[:-4:])
+    return await message.answer("Г‡Г ГЇГЁГ±Гј <" + note + "> Г¤Г®ГЎГ ГўГ«ГҐГ­Г  Гў " + folder[:-4:])
 
 
 @dp.message(Command("dn"))
 async def del_note(message: types.Message, command: CommandObject):
     if command.args is None:
-        return await message.answer("Ошибка: Вы не указали параметры")
+        return await message.answer("ГЋГёГЁГЎГЄГ : Г‚Г» Г­ГҐ ГіГЄГ Г§Г Г«ГЁ ГЇГ Г°Г Г¬ГҐГІГ°Г»")
     args = command.args.split(" ", maxsplit=1)
 
     if len(args) < 2:
-        return await message.answer("Ошибка: Вы не указали папку или номер записи")
+        return await message.answer("ГЋГёГЁГЎГЄГ : Г‚Г» Г­ГҐ ГіГЄГ Г§Г Г«ГЁ ГЇГ ГЇГЄГі ГЁГ«ГЁ Г­Г®Г¬ГҐГ° Г§Г ГЇГЁГ±ГЁ")
 
 
     n = int(args[0])
@@ -116,7 +116,7 @@ async def del_note(message: types.Message, command: CommandObject):
     l = os.listdir(os.getcwd() + "/" + chat_id)
 
     if n > len(l) or n < 1:
-        return await message.answer("Ошибка: Такой папки не существует")
+        return await message.answer("ГЋГёГЁГЎГЄГ : Г’Г ГЄГ®Г© ГЇГ ГЇГЄГЁ Г­ГҐ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ")
 
     folder = l[n-1]
     k = int(args[1])-1
@@ -134,7 +134,7 @@ async def del_note(message: types.Message, command: CommandObject):
         writer = csv.writer(f, delimiter='|')
         writer.writerows(data)
 
-    return await message.answer("Запись удалена успешно")
+    return await message.answer("Г‡Г ГЇГЁГ±Гј ГіГ¤Г Г«ГҐГ­Г  ГіГ±ГЇГҐГёГ­Г®")
 
 
 @dp.message(Command("slib"))
@@ -152,20 +152,20 @@ async def show_dir(message: types.Message):
 @dp.message(Command("cf"))
 async def create_csv(message: types.Message, command: CommandObject):
     if command.args is None:
-        return await message.answer("Ошибка: Вы не указали название папки")
+        return await message.answer("ГЋГёГЁГЎГЄГ : Г‚Г» Г­ГҐ ГіГЄГ Г§Г Г«ГЁ Г­Г Г§ГўГ Г­ГЁГҐ ГЇГ ГЇГЄГЁ")
 
     name = command.args.split(" ", maxsplit=1)[0].lower()
     chat_id = str(message.chat.id)
 
     file = open(chat_id+"/"+name+".csv", 'w+')
     file.close()
-    return await message.answer("Папка "+name+" создана")
+    return await message.answer("ГЏГ ГЇГЄГ  "+name+" Г±Г®Г§Г¤Г Г­Г ")
 
 
 @dp.message(Command("df"))
 async def delete_csv(message: types.Message, command: CommandObject):
     if command.args is None:
-        return await message.answer("Ошибка: Вы не указали номер папки")
+        return await message.answer("ГЋГёГЁГЎГЄГ : Г‚Г» Г­ГҐ ГіГЄГ Г§Г Г«ГЁ Г­Г®Г¬ГҐГ° ГЇГ ГЇГЄГЁ")
 
     n = int(command.args.split(" ", maxsplit=1)[0])
     chat_id = str(message.chat.id)
@@ -173,23 +173,23 @@ async def delete_csv(message: types.Message, command: CommandObject):
     l = os.listdir(os.getcwd() + "/" + chat_id)
 
     if n > len(l) or n < 1:
-        return await message.answer("Ошибка: Такой папки не существует")
+        return await message.answer("ГЋГёГЁГЎГЄГ : Г’Г ГЄГ®Г© ГЇГ ГЇГЄГЁ Г­ГҐ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ")
     name = l[n-1]
     os.remove(chat_id+"/"+name)
-    return await message.answer("Папка "+name[:-4:]+" удалена")
+    return await message.answer("ГЏГ ГЇГЄГ  "+name[:-4:]+" ГіГ¤Г Г«ГҐГ­Г ")
 
 
 @dp.message(Command("sf"))
 async def show_folder(message: types.Message, command: CommandObject):
     if command.args is None:
-        return await message.answer("Ошибка: Вы не указали номер папки")
+        return await message.answer("ГЋГёГЁГЎГЄГ : Г‚Г» Г­ГҐ ГіГЄГ Г§Г Г«ГЁ Г­Г®Г¬ГҐГ° ГЇГ ГЇГЄГЁ")
 
     n = int(command.args.split(" ", maxsplit=1)[0])
     chat_id = str(message.chat.id)
 
     l = os.listdir(os.getcwd() + "/" + chat_id)
     if n > len(l) or n < 1:
-        return await message.answer("Ошибка: Такой папки не существует")
+        return await message.answer("ГЋГёГЁГЎГЄГ : Г’Г ГЄГ®Г© ГЇГ ГЇГЄГЁ Г­ГҐ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ")
 
     name = l[n-1]
     name = name[:-4:]
@@ -201,7 +201,7 @@ async def show_folder(message: types.Message, command: CommandObject):
         for row in reader:
             ans += str(i) + ")"+ row[0] + "\n"
             for j in range(1, len(row)):
-                ans += "Примечание "+ str(j) + ": " + row[j] +"\n"
+                ans += "ГЏГ°ГЁГ¬ГҐГ·Г Г­ГЁГҐ "+ str(j) + ": " + row[j] +"\n"
             i += 1
 
     return await message.answer(ans)
@@ -209,11 +209,11 @@ async def show_folder(message: types.Message, command: CommandObject):
 @dp.message(Command("ac"))
 async def show_folder(message: types.Message, command: CommandObject):
     if command.args is None:
-        return await message.answer("Ошибка: Вы не указали номер папки")
+        return await message.answer("ГЋГёГЁГЎГЄГ : Г‚Г» Г­ГҐ ГіГЄГ Г§Г Г«ГЁ Г­Г®Г¬ГҐГ° ГЇГ ГЇГЄГЁ")
 
     args = command.args.split(" ", maxsplit=2)
     if len(args) < 3:
-        return await message.answer("Ошибка: Вы не указали один из параметров")
+        return await message.answer("ГЋГёГЁГЎГЄГ : Г‚Г» Г­ГҐ ГіГЄГ Г§Г Г«ГЁ Г®Г¤ГЁГ­ ГЁГ§ ГЇГ Г°Г Г¬ГҐГІГ°Г®Гў")
 
     n1 = int(args[0])
     n2 = int(args[1])
@@ -222,7 +222,7 @@ async def show_folder(message: types.Message, command: CommandObject):
 
     l = os.listdir(os.getcwd() + "/" + chat_id)
     if n1 > len(l) or n1 < 1:
-        return await message.answer("Ошибка: Такой папки не существует")
+        return await message.answer("ГЋГёГЁГЎГЄГ : Г’Г ГЄГ®Г© ГЇГ ГЇГЄГЁ Г­ГҐ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ")
 
     folder = l[n1-1]
     folder = folder
@@ -235,7 +235,7 @@ async def show_folder(message: types.Message, command: CommandObject):
                 data.append(row)
 
     if n2 < 0 or n2 > len(data):
-        return await message.answer("Ошибка: Такой записи не существует")
+        return await message.answer("ГЋГёГЁГЎГЄГ : Г’Г ГЄГ®Г© Г§Г ГЇГЁГ±ГЁ Г­ГҐ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ")
 
     data[n2-1].append(com)
 
@@ -243,17 +243,17 @@ async def show_folder(message: types.Message, command: CommandObject):
         writer = csv.writer(f, delimiter='|')
         writer.writerows(data)
 
-    return await message.answer("Примечание успешно добавлено")
+    return await message.answer("ГЏГ°ГЁГ¬ГҐГ·Г Г­ГЁГҐ ГіГ±ГЇГҐГёГ­Г® Г¤Г®ГЎГ ГўГ«ГҐГ­Г®")
 
 
 @dp.message(Command("dc"))
 async def show_folder(message: types.Message, command: CommandObject):
     if command.args is None:
-        return await message.answer("Ошибка: Вы не указали номер папки")
+        return await message.answer("ГЋГёГЁГЎГЄГ : Г‚Г» Г­ГҐ ГіГЄГ Г§Г Г«ГЁ Г­Г®Г¬ГҐГ° ГЇГ ГЇГЄГЁ")
 
     args = command.args.split(" ", maxsplit=3)
     if len(args) < 3:
-        return await message.answer("Ошибка: Вы не указали один из параметров")
+        return await message.answer("ГЋГёГЁГЎГЄГ : Г‚Г» Г­ГҐ ГіГЄГ Г§Г Г«ГЁ Г®Г¤ГЁГ­ ГЁГ§ ГЇГ Г°Г Г¬ГҐГІГ°Г®Гў")
 
     n1 = int(args[0])
     n2 = int(args[1])
@@ -262,7 +262,7 @@ async def show_folder(message: types.Message, command: CommandObject):
 
     l = os.listdir(os.getcwd() + "/" + chat_id)
     if n1 > len(l) or n1 < 1:
-        return await message.answer("Ошибка: Такой папки не существует")
+        return await message.answer("ГЋГёГЁГЎГЄГ : Г’Г ГЄГ®Г© ГЇГ ГЇГЄГЁ Г­ГҐ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ")
 
     folder = l[n1-1]
     folder = folder
@@ -275,14 +275,14 @@ async def show_folder(message: types.Message, command: CommandObject):
                 data.append(row)
 
     if n2 < 0 or n2 > len(data):
-        return await message.answer("Ошибка: Такой записи не существует")
+        return await message.answer("ГЋГёГЁГЎГЄГ : Г’Г ГЄГ®Г© Г§Г ГЇГЁГ±ГЁ Г­ГҐ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ")
 
     if len(data[n2-1]) == 1:
-        return await message.answer("Ошибка: У этой записи нет примечания")
+        return await message.answer("ГЋГёГЁГЎГЄГ : Г“ ГЅГІГ®Г© Г§Г ГЇГЁГ±ГЁ Г­ГҐГІ ГЇГ°ГЁГ¬ГҐГ·Г Г­ГЁГї")
 
 
     if n3 < 1 or n3 > len(data[n2-1]):
-        return await message.answer("Ошибка: У этой записи нет примечания с таким номером")
+        return await message.answer("ГЋГёГЁГЎГЄГ : Г“ ГЅГІГ®Г© Г§Г ГЇГЁГ±ГЁ Г­ГҐГІ ГЇГ°ГЁГ¬ГҐГ·Г Г­ГЁГї Г± ГІГ ГЄГЁГ¬ Г­Г®Г¬ГҐГ°Г®Г¬")
 
     data[n2-1].pop(n3-1)
 
@@ -290,7 +290,7 @@ async def show_folder(message: types.Message, command: CommandObject):
         writer = csv.writer(f, delimiter='|')
         writer.writerows(data)
 
-    return await message.answer("Примечание успешно удалено")
+    return await message.answer("ГЏГ°ГЁГ¬ГҐГ·Г Г­ГЁГҐ ГіГ±ГЇГҐГёГ­Г® ГіГ¤Г Г«ГҐГ­Г®")
 
     
 
